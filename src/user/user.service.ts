@@ -17,19 +17,7 @@ export class UserService {
         private readonly userRepo : UserRepository,
         @InjectRepository(Permission) private readonly permissionRepo: EntityRepository<Permission>
     ) { }
-
-    // async userLogin (loginData : LoginUserDto) : Promise<any> {
-    //     const { email, password} = loginData;
-    //     var user : User = await this.userRepo.findOne({
-    //         email : email
-    //     });
-    //     var compare : Boolean = await bcryptjs.compare(password, user.password);
-    //     if(compare){
-    //         return user;
-    //     }else {
-    //         return false;
-    //     }
-    // }
+    
 
     private buildUserRO(user: User) {
         const userRO = {
@@ -70,11 +58,5 @@ export class UserService {
             return this.buildUserRO(user);
 
         }
-    }
-
-    async getUserDetails (userId:number) : Promise<User> {
-        return this.userRepo.findOne(userId,{
-            populate: ['shop', 'product', 'permission']
-        });
     }
 }

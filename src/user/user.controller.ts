@@ -19,40 +19,6 @@ export class UserController {
         private readonly jwtService: JwtService
     ) { }
 
-    // @Post('login')
-    // @ApiHeader({
-    //     name: 'x-access-token',
-    //     description: 'Custom header for api access token , example value : 12345',
-    // })
-    // @ApiBody({
-    //     description: "Create product",
-    //     type: LoginUserDto
-    // })
-    // async createProduct(
-    //     @Body() loginData: LoginUserDto
-    // ): Promise<any> {
-    //     const login: any = await this.userService.userLogin(loginData);
-
-    //     if (login) {
-    //         var payload = this.jwtService.sign( { id: login.id },
-    //             {
-    //                 secret: env.JWT_SECRET_KEY
-    //             }
-    //         );
-            
-    //         return {
-    //             token : payload,
-    //             user : login
-    //         };
-    //     } else {
-    //         throw new HttpException({
-    //             message: "Unauthorize",
-    //             errors: "User not found"
-    //         }, HttpStatus.UNAUTHORIZED)
-    //     }
-
-    // }
-
     @Post()
     @ApiHeader({
         name: 'x-access-token',
@@ -62,7 +28,7 @@ export class UserController {
         description: "Create user",
         type: CreateUserDto
     })
-    async createProduct(
+    async createUser(
         @Body() userData: CreateUserDto
     ): Promise<any> {
         let userType = "APP_USER";
@@ -77,19 +43,5 @@ export class UserController {
             role :  UserRole[<UserRole>userRole]
         }
         return this.userService.createUser(data);
-    }
-
-    @Get("/:userId")
-    @ApiHeader({
-        name: 'x-access-token',
-        description: 'Custom header for api access token , example value : 12345',
-    })
-    @ApiParam({
-        name: "userId"
-    })
-    async getProductDetails(
-        @Param() params
-    ): Promise<any> {
-        return this.userService.getUserDetails(params.userId);
     }
 }

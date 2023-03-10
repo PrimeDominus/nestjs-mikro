@@ -49,17 +49,4 @@ export class ShopService {
         });
         return shops
     }
-
-    async getShopDetails (shopId:number) : Promise<Shop> {
-        return this.shopRepository.findOne(shopId,{
-            populate: ['products','owner']
-        });
-    }
-
-    async updateShop(shopId: number, dto: UpdateShopDto) : Promise<IShopRO> {
-        const shop = await this.shopRepository.findOne(shopId);
-        wrap(shop).assign(dto);
-        this.shopRepository.flush();
-        return this.buildShopRO(shop);
-    }
 }

@@ -43,25 +43,4 @@ export class ProductService {
 
         }
     }
-
-    async getProductList () : Promise<Product[]> {
-        const shops = this.productRepository.findAll({
-            orderBy:{id:'asc'},
-            // populate: ["shop","owner"]            
-        });
-        return shops
-    }
-
-    async getProductDetails (productId:number) : Promise<Product> {
-        return this.productRepository.findOne(productId,{
-            populate: ['shop', 'owner']
-        });
-    }
-
-    async update(productId: number, dto: UpdateProductDto) : Promise<IProductRO> {
-        const product = await this.productRepository.findOne(productId);
-        wrap(product).assign(dto);
-        this.productRepository.flush();
-        return this.buildProductRO(product);
-    }
 }
