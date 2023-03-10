@@ -14,7 +14,7 @@ docker-compose up
 npm install
 npm run start:dev
 npm run create:db
-npm run start:db
+npm run start:dev
 ```
 ```
 Now on your browser open this link to see the response 
