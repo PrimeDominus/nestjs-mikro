@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Post, Req } from '@nestjs/common';
 import { Request } from 'express';
 import { ApiBody, ApiHeader } from '@nestjs/swagger';
-import { Logger } from 'nestjs-pino';
 import { CreateShopDto } from './dto';
 import { ShopService } from './shop.service';
 import { LoginUser } from 'src/user/user.decorator';
@@ -14,8 +13,7 @@ import { User } from 'src/user/user.entity';
 export class ShopController {
 
     constructor(
-        private readonly shopService: ShopService,
-        private readonly logger: Logger
+        private readonly shopService: ShopService
     ) { }
 
     @Post()

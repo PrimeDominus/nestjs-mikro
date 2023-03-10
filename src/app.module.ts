@@ -1,10 +1,9 @@
 import { ConfigModule } from '@nestjs/config';
 import { MikroOrmModule, MikroOrmMiddleware } from '@mikro-orm/nestjs';
 import { Module, NestModule, MiddlewareConsumer, OnModuleInit, RequestMethod } from '@nestjs/common';
-import { LoggerModule } from 'nestjs-pino';
 import { AppController } from './app.controller';
 import { TerminusModule } from '@nestjs/terminus';
-import { MikroORM, RequestContext } from '@mikro-orm/core';
+import { MikroORM } from '@mikro-orm/core';
 import { ShopModule } from './shop/shop.module';
 import { ProductModule } from './product/product.module';
 import { AuthModule } from './auth/auth.model';
@@ -22,7 +21,6 @@ import { NextFunction } from 'express';
     }),
 
     MikroOrmModule.forRoot(),
-    LoggerModule.forRoot(),
     TerminusModule,
     ShopModule,
     ProductModule,
