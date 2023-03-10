@@ -6,8 +6,8 @@ import {
     PrimaryKey,
     Property,
 } from '@mikro-orm/core';
-import { Product } from 'src/product/product.entity';
-import { Shop } from 'src/shop/shop.entity';
+import { Product } from '../product/product.entity';
+import { Shop } from '../shop/shop.entity';
 import { UserRepository } from './user.repository';
 
 @Entity({ customRepository: () => UserRepository })

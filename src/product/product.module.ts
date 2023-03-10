@@ -1,6 +1,6 @@
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { Shop } from 'src/shop/shop.entity';
+import { Shop } from '../shop/shop.entity';
 import { ShopModule } from 'src/shop/shop.module';
 import { ProuductController } from './product.controller';
 import { Product } from './product.entity';

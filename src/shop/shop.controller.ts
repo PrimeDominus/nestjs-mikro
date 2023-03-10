@@ -4,7 +4,7 @@ import { ApiBody, ApiHeader } from '@nestjs/swagger';
 import { CreateShopDto } from './dto';
 import { ShopService } from './shop.service';
 import { LoginUser } from 'src/user/user.decorator';
-import { User } from 'src/user/user.entity';
+import { User } from '../user/user.entity';
 
 @Controller({
     path: 'shop',

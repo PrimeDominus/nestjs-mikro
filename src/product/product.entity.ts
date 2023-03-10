@@ -5,7 +5,7 @@ import {
     PrimaryKey,
     Property,
 } from '@mikro-orm/core';
-import { User } from 'src/user/user.entity';
+import { User } from '../user/user.entity';
 import { Shop } from '../shop/shop.entity';
 import { ProductRepository } from './product.repository';
 

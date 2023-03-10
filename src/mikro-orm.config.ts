@@ -17,6 +17,10 @@ const config: Options = {
     metadataProvider: TsMorphMetadataProvider,
     debug: true,
     tsNode: false,
+    seeder: {
+        path: 'dist/seeder',
+        pathTs: 'src/seeder',
+    },
 }
 // as Options;
 export default config;
