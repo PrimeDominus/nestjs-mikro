@@ -1,7 +1,6 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, Put, Req, Res, UsePipes, ValidationPipe } from '@nestjs/common';
-import { ApiBody, ApiHeader, ApiParam } from '@nestjs/swagger';
-import { Logger } from 'nestjs-pino';
-import { LoginUserDto, UserType, UserRole } from './dto/index';
+import { Body, Controller, Post } from '@nestjs/common';
+import { ApiBody } from '@nestjs/swagger';
+import { UserType, UserRole } from './dto/index';
 import { UserService } from './user.service';
 const env = process.env;
 import { JwtService } from '@nestjs/jwt';
@@ -20,10 +19,6 @@ export class UserController {
     ) { }
 
     @Post()
-    @ApiHeader({
-        name: 'x-access-token',
-        description: 'Custom header for api access token , example value : 12345',
-    })
     @ApiBody({
         description: "Create user",
         type: CreateUserDto

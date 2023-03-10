@@ -1,9 +1,8 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { validate } from 'class-validator';
-import { wrap, EntityRepository, UseRequestContext } from '@mikro-orm/core';
-import { ShopRepository } from './shop.repository';
+import { EntityRepository } from '@mikro-orm/core';
 import { Shop } from './shop.entity';
-import { CreateShopDto, UpdateShopDto } from './dto';
+import { CreateShopDto } from './dto';
 import { IShopRO } from './shop.interface';
 import { InjectRepository } from '@mikro-orm/nestjs';
 

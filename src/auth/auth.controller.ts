@@ -1,5 +1,5 @@
 import { Body, Controller, HttpException, HttpStatus, Post } from '@nestjs/common';
-import { ApiBody, ApiHeader } from '@nestjs/swagger';
+import { ApiBody } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { LoginAuthDto } from './dto';
 const env = process.env;
@@ -17,10 +17,6 @@ export class AuthController {
     ) { }
 
     @Post('login')
-    @ApiHeader({
-        name: 'x-access-token',
-        description: 'Custom header for api access token , example value : 12345',
-    })
     @ApiBody({
         description: "Login user",
         type: LoginAuthDto

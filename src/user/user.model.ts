@@ -1,7 +1,6 @@
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { Permission } from 'src/permission/permission.entity';
 import { UserController } from './user.controller';
 import { User } from './user.entity';
 import { UserService } from './user.service';
@@ -10,7 +9,7 @@ import { UserService } from './user.service';
     controllers : [UserController],
     exports : [UserService],
     imports : [
-        MikroOrmModule.forFeature({entities:[User, Permission]})
+        MikroOrmModule.forFeature({entities:[User]})
     ],
     providers : [UserService, JwtService]
 })

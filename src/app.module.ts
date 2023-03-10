@@ -12,8 +12,6 @@ import { UserModule } from './user/user.model';
 import { LoginMiddleware } from './middleware/login.middleware';
 import { JwtService } from '@nestjs/jwt';
 import { User } from './user/user.entity';
-import { PermissionModule } from './permission/permission.model';
-import { CaslModule } from './casl/casl.module';
 import { NextFunction } from 'express';
 
 @Module({
@@ -30,8 +28,7 @@ import { NextFunction } from 'express';
     ProductModule,
     AuthModule,
     UserModule,
-    MikroOrmModule.forFeature({entities:[User]}),// used for middleware access
-    PermissionModule, CaslModule
+    MikroOrmModule.forFeature({entities:[User]}),
   ],
   controllers: [
     AppController

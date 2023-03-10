@@ -1,6 +1,5 @@
-import { JsonType } from '@mikro-orm/core';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsEnum, IsNotEmpty, IsNumber, IsString } from 'class-validator'
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator'
 
 export enum UserType {
     APP_USER = "APP_USER",
@@ -46,22 +45,4 @@ export class CreateUserDto {
     @IsNotEmpty()
     @IsString()
     readonly password: string;
-
-    @ApiProperty({
-        type: String,
-        description: "user type"
-    })
-    @IsNotEmpty()
-    @IsString()
-    @IsEnum(UserType)
-    readonly type: UserType;
-
-    @ApiProperty({
-        type: String,
-        description: "role type"
-    })
-    @IsNotEmpty()
-    @IsString()
-    @IsEnum(UserRole)
-    readonly role: UserRole;
 }

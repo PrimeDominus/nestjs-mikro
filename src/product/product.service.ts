@@ -1,11 +1,9 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { validate } from 'class-validator';
-import { wrap } from '@mikro-orm/core';
 import { ProductRepository } from './product.repository';
 import { Product } from './product.entity';
 import { IProductRO } from './product.interface';
-import { CreateProductDto, UpdateProductDto } from './dto';
-import { Logger } from 'nestjs-pino';
+import { CreateProductDto } from './dto';
 
 @Injectable()
 export class ProductService {

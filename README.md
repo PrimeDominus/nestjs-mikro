@@ -18,10 +18,6 @@ DB_NAME = "mikroORMNest"
 DB_PORT = "5432"
 DB_TYPE = "postgresql"
 JWT_SECRET_KEY = "!@#$%^&*()_+_)(*&^%$#@!"
-KEYCLOAK_REALM = "nestjs-auth-test"
-KEYCLOAK_CLIENT_ID = "auth-testing-nestjs"
-KEYCLOAK_CLIENT_SECRET = "121414"
-KEYCLOAK_AUTH_SERVER_URL = "http://localhost:8080/"
 ```
 
 # api doc link 
@@ -29,26 +25,28 @@ KEYCLOAK_AUTH_SERVER_URL = "http://localhost:8080/"
 http://localhost:3000/api-doc
 ```
 
-# 1> install package
+# install package
 ``` command
 npm install
 ```
 
-# 2> start docker (linux)
+# start docker (linux)
 ``` command
 sudo systemctl start docker
 docker-compose up
 ```
 
-# 3> create database 
+# create database 
 ``` description
 Go to .env file and set DB_SYNC = true
 ```
-``` description
-Command : npm run start:dev1
+
+# Start Project
+``` command
+npm run start:dev1
 ```
 
-# 4> create user
+# create user
 ``` description
 Route : /v1/user (POST)
 ```
@@ -57,20 +55,14 @@ Example body param :
 {
   "name": "sp",
   "email": "sp-1@yopmail.com",
-  "password": "1234",
-  "type": "APP_USER",
-  "role": "SUPERADMIN"
+  "password": "1234"
 }
 ```
-``` description
-x-access-token : 12345
-```
 
-# 5> Login user
+# Login user
 ``` description
 Route : /v1/auth/login (POST)
 ```
-
 Example body param: 
 ``` json
 {
@@ -79,7 +71,7 @@ Example body param:
 }
 ```
 
-# 6> create shop
+# create shop
 ``` description
 Route : /v1/shop (POST)
 ```
@@ -92,11 +84,10 @@ Example body param :
 }
 ```
 ``` description
-x-access-token : 12345
 token : pass login token here
 ```
 
-# 6> create product
+# create product
 ``` description
 Route : /v1/product (POST)
 ```
@@ -111,13 +102,11 @@ Example body param :
 }
 ```
 ``` description
-x-access-token : 12345
 token : pass login token here
 ```
 
-# 7> get shop list
+# get shop list
 ``` description
 Route : /v1/shop (GET)
-x-access-token : 12345
 token : pass login token here
 ```

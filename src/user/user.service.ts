@@ -1,21 +1,16 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { validate } from 'class-validator';
-import { wrap } from '@mikro-orm/core';
 import { User } from './user.entity';
-import { CreateUserDto, LoginUserDto } from './dto';
+import { CreateUserDto } from './dto';
 import { UserRepository } from './user.repository';
-import { IUserData, IUserRO } from './user.interface';
-import { InjectRepository } from '@mikro-orm/nestjs';
-import { Permission } from 'src/permission/permission.entity';
-import { EntityRepository } from '@mikro-orm/postgresql';
+import { IUserRO } from './user.interface';
 const bcryptjs = require('bcryptjs');
 const bcryptSalt = 10;
 
 @Injectable()
 export class UserService {
     constructor(
-        private readonly userRepo : UserRepository,
-        @InjectRepository(Permission) private readonly permissionRepo: EntityRepository<Permission>
+        private readonly userRepo : UserRepository
     ) { }
     
 
@@ -24,8 +19,6 @@ export class UserService {
             name: user.name,
             email: user.email,
             password : user.password,
-            type : user.type,
-            role : user.role,
             createdAt : user.createdAt,
             updatedAt : user.updatedAt
         };
@@ -34,14 +27,8 @@ export class UserService {
     }
 
     async createUser (dto : CreateUserDto) : Promise<IUserRO> {
-        const { name, email, password, role , type } = dto;
-        const user = new User(name, email, password, type , role);
-
-        const permissionShop = new Permission('shop', true, true, true, false);
-        user.permission.add(permissionShop)
-
-        const permissionProduct = new Permission('product', true, true, true, false);
-        user.permission.add(permissionProduct)
+        const { name, email, password } = dto;
+        const user = new User(name, email, password);
 
         const errors = await validate(user);
         

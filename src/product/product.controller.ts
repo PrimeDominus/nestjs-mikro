@@ -1,8 +1,6 @@
-import { Body, Controller, Get, Param, Post, Put, Req, Res, UsePipes, ValidationPipe } from '@nestjs/common';
-import { ApiBody, ApiHeader, ApiParam } from '@nestjs/swagger';
-import { Logger } from 'nestjs-pino';
-import { CreateProductDto, UpdateProductDto } from './dto';
-import { Product } from './product.entity';
+import { Body, Controller, Post } from '@nestjs/common';
+import { ApiBody, ApiHeader } from '@nestjs/swagger';
+import { CreateProductDto } from './dto';
 import { ProductService } from './product.service';
 
 @Controller({
@@ -16,10 +14,6 @@ export class ProuductController {
     ) { }
 
     @Post()
-    @ApiHeader({
-        name: 'x-access-token',
-        description: 'Custom header for api access token , example value : 12345',
-    })
     @ApiHeader({
         name: 'token',
         description: 'Pass login token , example value : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI',
