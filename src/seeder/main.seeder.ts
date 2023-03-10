@@ -22,7 +22,7 @@ export class MainSeeder extends Seeder {
         em.create(User, {
             name: userVal.name,
             email: userVal.email,
-            password: userVal.email,
+            password: userVal.password,
         });
 
         const shopVal = {
